@@ -1,6 +1,6 @@
 #include<stdio.h>
-
-int main()
+#include<conio.h>
+void main()
 {
 int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
 printf("Enter Total Number of Process:");
@@ -44,3 +44,5 @@ printf("\nP[%d]\t\t %d\t\t %d\t\t\t%d",p[i],bt[i],wt[i],tat[i]);
 avg_tat=total/n;
 printf("\n\nAverage Waiting Time=%d",avg_wt);
 printf("\nAverage Turnaround Time=%d\n",avg_tat);
+getch();
+}

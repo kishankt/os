@@ -1,20 +1,109 @@
 #include<stdio.h>
+#include<conio.h>
 #include<stdlib.h>
-int main ()
+#define size 5000
+int queue[size],front= -1,rear= -1;
+void enqueue(int);
+void display();
+void main()
 {
-int pReq[15],i,j,cylinder,curPossition,prevPossition,qSize,qInput,qList[15],sortQueList[15],t,calc,sum=0,rev,result;
-printf("Please enter the max size of cylinder disk drive : ");
-scanf("\n%d",&cylinder);
-printf("Please enter the current position of Serving : ");
-scanf("\n%d",&curPossition);
-printf("Please enter the pending queue list size : ");
-scanf("\n%d",&qSize);
-printf("Please enter the pending %d queue Number : ",qSize);
-for (i = 0; i<=qSize-1; i++)
+int i,n;	
+int value;
+printf("no of elements to insert:");
+scanf("%d",&n);
+for(i=0;i<n;i++)
 {
-scanf("%d",&qInput); //taking pending queue list input from user.
-if (qInput>0)
-{
-qList[i]=qInput;
+scanf("%d",&value);
+enqueue(value);
+}	
+display();	
+calc();
 }
+void enqueue(int value)
+{	
+if(rear==size-1)	
+{
+printf("queue--full");	
+}
+else
+{		
+if(front==-1)
+front=0;
+rear++;
+queue[rear]=value;
+}
+}
+void display()
+{
+int i;	
+if(rear==-1)
+{
+printf("queue--empty");	
+}
+else
+{	
+for(i=front;i<=rear;i++)	
+{
+		
+printf("%d\t",queue[i]);
+	
+}
+
+}
+
+}
+
+void calc()
+
+{
+	
+int total_distance=0,d,i;
+	
+int current_pos,prev_pos;
+	
+printf("\n");
+	
+printf("enter prev pos:");
+	
+scanf("%d",&prev_pos);
+	
+getchar();
+	
+printf("\n");
+	
+printf("enter current pos");
+	
+scanf("%d",&current_pos);
+	
+getchar();
+	
+d=current_pos-queue[front];
+	
+if(d<0)
+		
+total_distance=-d;
+		
+else
+		
+total_distance=d;
+	
+for(i=front;i<rear;i++)
+	
+{
+		
+d=queue[i]-queue[i+1];
+		
+if(d<0)
+		
+d=-d;
+		
+
+total_distance=total_distance + d;
+	
+}
+	
+printf("\a");
+	
+printf("distance=%d",total_distance);
+
 }
